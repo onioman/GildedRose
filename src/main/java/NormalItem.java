@@ -5,24 +5,9 @@ public class NormalItem extends Item {
     }
 
     public void updateQuality() {
-        if ("Backstage passes to a TAFKAL80ETC concert".equals(getName())) {
-            increaseQuality();
-            if (getSellIn() < 11) {
-                increaseQuality();
-            }
-            if (getSellIn() < 6) {
-                increaseQuality();
-            }
-        } else {
-            decreaseQuality();
-        }
-
+        decreaseQuality();
         decreaseSellIn();
-
         if (getSellIn() < 0) {
-            if ("Backstage passes to a TAFKAL80ETC concert".equals(getName())) {
-                setQuality(0);
-            }
             decreaseQuality();
         }
     }
