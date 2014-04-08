@@ -13,7 +13,7 @@ public class GildedRose {
         items.add(new NormalItem("+5 Dexterity Vest", 10, 20));
         items.add(new AgedBrie(2, 0));
         items.add(new NormalItem("Elixir of the Mongoose", 5, 7));
-        items.add(new NormalItem("Sulfuras, Hand of Ragnaros", 0, 80));
+        items.add(new Sulfuras());
         items.add(new NormalItem("Backstage passes to a TAFKAL80ETC concert", 15, 20));
         items.add(new NormalItem("Conjured Mana Cake", 3, 6));
 
