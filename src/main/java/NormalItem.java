@@ -5,30 +5,21 @@ public class NormalItem extends Item {
     }
 
     public void updateQuality() {
-        if ((!"Aged Brie".equals(getName())) &&
-                !"Backstage passes to a TAFKAL80ETC concert".equals(getName())) {
-            if (getQuality() > 0) {
-                if (!"Sulfuras, Hand of Ragnaros".equals(getName())) {
-                    setQuality(getQuality() - 1);
+        if ("Aged Brie".equals(getName()) ||
+                "Backstage passes to a TAFKAL80ETC concert".equals(getName())) {
+            increaseQuality();
+            if ("Backstage passes to a TAFKAL80ETC concert".equals(getName())) {
+                if (getSellIn() < 11) {
+                    increaseQuality();
+                }
+
+                if (getSellIn() < 6) {
+                    increaseQuality();
                 }
             }
         } else {
-            if (getQuality() < 50) {
-                setQuality(getQuality() + 1);
-
-                if ("Backstage passes to a TAFKAL80ETC concert".equals(getName())) {
-                    if (getSellIn() < 11) {
-                        if (getQuality() < 50) {
-                            setQuality(getQuality() + 1);
-                        }
-                    }
-
-                    if (getSellIn() < 6) {
-                        if (getQuality() < 50) {
-                            setQuality(getQuality() + 1);
-                        }
-                    }
-                }
+            if (!"Sulfuras, Hand of Ragnaros".equals(getName())) {
+                decreaseQuality();
             }
         }
 
@@ -39,19 +30,27 @@ public class NormalItem extends Item {
         if (getSellIn() < 0) {
             if (!"Aged Brie".equals(getName())) {
                 if (!"Backstage passes to a TAFKAL80ETC concert".equals(getName())) {
-                    if (getQuality() > 0) {
-                        if (!"Sulfuras, Hand of Ragnaros".equals(getName())) {
-                            setQuality(getQuality() - 1);
-                        }
+                    if (!"Sulfuras, Hand of Ragnaros".equals(getName())) {
+                        decreaseQuality();
                     }
                 } else {
                     setQuality(0);
                 }
             } else {
-                if (getQuality() < 50) {
-                    setQuality(getQuality() + 1);
-                }
+                increaseQuality();
             }
+        }
+    }
+
+    private void decreaseQuality() {
+        if (getQuality() > 0) {
+            setQuality(getQuality() - 1);
+        }
+    }
+
+    private void increaseQuality() {
+        if (getQuality() < 50) {
+            setQuality(getQuality() + 1);
         }
     }
 }
