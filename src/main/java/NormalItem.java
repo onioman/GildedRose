@@ -14,23 +14,16 @@ public class NormalItem extends Item {
                 increaseQuality();
             }
         } else {
-            if (!"Sulfuras, Hand of Ragnaros".equals(getName())) {
-                decreaseQuality();
-            }
+            decreaseQuality();
         }
 
-        if (!"Sulfuras, Hand of Ragnaros".equals(getName())) {
-            decreaseSellIn();
-        }
+        decreaseSellIn();
 
         if (getSellIn() < 0) {
             if ("Backstage passes to a TAFKAL80ETC concert".equals(getName())) {
                 setQuality(0);
-            } else {
-                if (!"Sulfuras, Hand of Ragnaros".equals(getName())) {
-                    decreaseQuality();
-                }
             }
+            decreaseQuality();
         }
     }
 
