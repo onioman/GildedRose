@@ -5,17 +5,13 @@ public class NormalItem extends Item {
     }
 
     public void updateQuality() {
-        if ("Aged Brie".equals(getName()) ||
-                "Backstage passes to a TAFKAL80ETC concert".equals(getName())) {
+        if ("Backstage passes to a TAFKAL80ETC concert".equals(getName())) {
             increaseQuality();
-            if ("Backstage passes to a TAFKAL80ETC concert".equals(getName())) {
-                if (getSellIn() < 11) {
-                    increaseQuality();
-                }
-
-                if (getSellIn() < 6) {
-                    increaseQuality();
-                }
+            if (getSellIn() < 11) {
+                increaseQuality();
+            }
+            if (getSellIn() < 6) {
+                increaseQuality();
             }
         } else {
             if (!"Sulfuras, Hand of Ragnaros".equals(getName())) {
@@ -24,31 +20,31 @@ public class NormalItem extends Item {
         }
 
         if (!"Sulfuras, Hand of Ragnaros".equals(getName())) {
-            setSellIn(getSellIn() - 1);
+            decreaseSellIn();
         }
 
         if (getSellIn() < 0) {
-            if (!"Aged Brie".equals(getName())) {
-                if (!"Backstage passes to a TAFKAL80ETC concert".equals(getName())) {
-                    if (!"Sulfuras, Hand of Ragnaros".equals(getName())) {
-                        decreaseQuality();
-                    }
-                } else {
-                    setQuality(0);
-                }
+            if ("Backstage passes to a TAFKAL80ETC concert".equals(getName())) {
+                setQuality(0);
             } else {
-                increaseQuality();
+                if (!"Sulfuras, Hand of Ragnaros".equals(getName())) {
+                    decreaseQuality();
+                }
             }
         }
     }
 
-    private void decreaseQuality() {
+    protected void decreaseSellIn() {
+        setSellIn(getSellIn() - 1);
+    }
+
+    protected void decreaseQuality() {
         if (getQuality() > 0) {
             setQuality(getQuality() - 1);
         }
     }
 
-    private void increaseQuality() {
+    protected void increaseQuality() {
         if (getQuality() < 50) {
             setQuality(getQuality() + 1);
         }
