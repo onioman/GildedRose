@@ -15,7 +15,7 @@ public class GildedRose {
         items.add(new NormalItem("Elixir of the Mongoose", 5, 7));
         items.add(new Sulfuras());
         items.add(new BackstagePass(15, 20));
-        items.add(new NormalItem("Conjured Mana Cake", 3, 6));
+        items.add(new ConjuredItem("Mana Cake", 3, 6));
 
         updateQuality();
     }
